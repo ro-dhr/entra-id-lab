@@ -146,7 +146,13 @@ Confirmed the sign-in event is visible and traceable in Sign-in logs — critica
 Enabled Microsoft Authenticator and SMS as available authentication methods tenant-wide, then enabled SSPR requiring **2 methods** to reset a password.
 
 ![Authentication methods enabled (Authenticator + SMS)](screenshots/scenario04-00-auth-methods-enabled.png)
+
+Enabling SSPR
+
 ![SSPR enabled](screenshots/scenario04-01-sspr-enabled.png)
+
+Note: Requiring 2 methods instead of 1 is a much better practice, just in case one method of authentication is compromised.
+
 ![SSPR requiring 2 methods](screenshots/scenario04-02-sspr-two-methods-required.png)
 
 ### Build — Conditional Access requiring MFA
