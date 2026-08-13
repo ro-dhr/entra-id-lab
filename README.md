@@ -175,18 +175,18 @@ As admin, deleted both of Charles's registered authentication methods, clearing 
 ### Verify — re-registration and sign-in
 Signed in as Charles again. With no methods on file, he was walked through registering Microsoft Authenticator and a phone number from scratch.
 
-![Authenticator registration complete](screenshots/scenario04-09-charles-authenticator-complete.png)
-![SMS method added](screenshots/scenario04-11-charles-sms-added.png)
-![Charles signed in successfully after MFA setup](screenshots/scenario04-12-charles-signed-in.png)
+![Authenticator registration complete](screenshots/scenario04-08-charles-authenticator-complete.png)
+![SMS method added](screenshots/scenario04-09-charles-sms-added.png)
+![Charles signed in successfully after MFA setup](screenshots/scenario04-10-charles-signed-in.png)
 
 ### Bonus verify — SSPR works end-to-end
 To confirm the SSPR configuration from earlier was fully functional (not just configured), walked through the self-service "Get back into your account" flow as Charles using his newly registered methods.
 
-![SSPR step 1 — phone verification](screenshots/scenario04-13-sspr-test-step1.png)
-![SSPR step 2 — authenticator app verification](screenshots/scenario04-14-sspr-test-step2.png)
-![Setting a new password](screenshots/scenario04-15-sspr-new-password.png)
-![Password reset confirmed](screenshots/scenario04-16-sspr-reset-complete.png)
-![Signed in successfully with the new password](screenshots/scenario04-17-signin-after-sspr.png)
+![SSPR step 1 — phone verification](screenshots/scenario04-11-sspr-test-step1.png)
+![SSPR step 2 — authenticator app verification](screenshots/scenario04-12-sspr-test-step2.png)
+![Setting a new password](screenshots/scenario04-13-sspr-new-password.png)
+![Password reset confirmed](screenshots/scenario04-14-sspr-reset-complete.png)
+![Signed in successfully with the new password](screenshots/scenario04-15-signin-after-sspr.png)
 
 **Root cause:** Charles had no way to complete MFA after losing his registered device, and had no fallback registered method for SSPR to fall back on either. **Resolution:** Clearing his registered methods as admin let him re-register cleanly, and testing SSPR afterward confirmed the whole authentication chain (registration → CA-enforced MFA → self-service reset) was working end-to-end, not just individually configured.
 
