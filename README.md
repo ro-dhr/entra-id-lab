@@ -86,7 +86,7 @@ After reviewing, the policy was switched to **On**.
 ![Policy fully configured and turned on](screenshots/scenario02-04-policy-turned-on.png)
 
 ### Verify
-Checked Sign-in logs for a normal browser-based sign-in and confirmed the policy's Conditional Access result showed **Not applied** — correctly confirming the policy does not affect modern authentication and only targets legacy client types, as designed. (Note: since virtually no modern client still uses legacy authentication protocols, and Exchange Online has legacy auth disabled tenant-wide by default, live blocked-sign-in evidence isn't practically reproducible in this environment — the policy configuration and this "not applied to modern auth" confirmation serve as the evidence instead.)
+Checked Sign-in logs for a normal browser-based sign-in and confirmed the policy's Conditional Access result showed **Not applied** — correctly confirming the policy does not affect modern authentication and only targets legacy client types, as designed. 
 
 ![Sign-in logs showing Conditional Access result: Not Applied](screenshots/scenario02-05-signin-logs-not-applied.png)
 
