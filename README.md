@@ -102,7 +102,6 @@ Checked Sign-in logs for a normal browser-based sign-in and confirmed the policy
 Created a dedicated Global Administrator account, **Emergency Access Admin** (`breakglass@cloudpulsesolutions.onmicrosoft.com`), with a long, randomly generated password and no license assigned — kept to a minimal footprint with no mailbox or standing services attached.
 
 ![Break-glass account basic info](screenshots/scenario03-00-breakglass-basic-info.png)
-Assigning Global Administrator Role
 ![Assigning the Global Administrator role](screenshots/scenario03-01-assigning-role.png)
 ![Role assignment confirmed](screenshots/scenario03-02-role-assigned-global-admin.png)
 ![Review + create](screenshots/scenario03-03-review-create.png)
