@@ -149,9 +149,6 @@ Created a new Conditional Access policy, **Require MFA For All Users**, applying
 ![Grant control requiring MFA](screenshots/scenario04-03-ca-policy-grant-mfa.png)
 ![Policy switched from Report-only to On](screenshots/scenario04-04-ca-policy-on.png)
 
-### Note: a real troubleshooting detour
-While testing the break-glass account against this new policy, it was unexpectedly prompted for MFA registration on every sign-in attempt, despite Conditional Access and Security Defaults both correctly excluding/not applying to it. Tracing the cause ruled out Conditional Access (excluded), Security Defaults (already auto-disabled once a CA policy existed), and the legacy per-user MFA portal (no longer separately accessible in this tenant) before identifying the actual source: **Identity Protection's MFA registration policy**, a separate feature enabled tenant-wide once the EMS E5 trial was added, independent of Conditional Access entirely. Adding the break-glass account to that policy's exclude list resolved it. This is a good example of eliminating layers systematically — Conditional Access, Security Defaults, legacy per-user MFA, and Identity Protection are four separate systems in Entra ID that can each independently affect MFA/registration behavior, and a real investigation has to check all of them rather than assuming a single cause.
-
 ### Reproduce — user prompted for MFA
 Signed in as Charles Spence (who had not yet registered MFA) and confirmed he was prompted to add a sign-in method, as required by the new Conditional Access policy.
 
