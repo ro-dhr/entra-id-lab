@@ -175,9 +175,7 @@ As admin, deleted both of Charles's registered authentication methods, clearing 
 ### Verify — re-registration and sign-in
 Signed in as Charles again. With no methods on file, he was walked through registering Microsoft Authenticator and a phone number from scratch.
 
-![Charles re-registering Microsoft Authenticator](screenshots/scenario04-08-charles-reregister-authenticator.png)
 ![Authenticator registration complete](screenshots/scenario04-09-charles-authenticator-complete.png)
-![Setting up SMS as the second method](screenshots/scenario04-10-charles-sms-setup.png)
 ![SMS method added](screenshots/scenario04-11-charles-sms-added.png)
 ![Charles signed in successfully after MFA setup](screenshots/scenario04-12-charles-signed-in.png)
 
