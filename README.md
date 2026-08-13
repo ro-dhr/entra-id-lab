@@ -108,6 +108,9 @@ Assigning the Global Administrator Role
 ![Assigning the Global Administrator role](screenshots/scenario03-01-assigning-role.png)
 ![Role assignment confirmed](screenshots/scenario03-02-role-assigned-global-admin.png)
 ![Review + create](screenshots/scenario03-03-review-create.png)
+
+The Break-Glass Admin account has been created and now appears in Users.
+
 ![Account created](screenshots/scenario03-04-account-created.png)
 
 ### Configure — excluded from Conditional Access
