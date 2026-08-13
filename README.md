@@ -1,6 +1,6 @@
 # Entra ID Identity & Access Governance Lab
 
-Eight scenarios covering identity, access control, and governance in a live Microsoft 365 / Entra ID tenant, built for a fictional logistics and supply chain company. Unlike a mailbox/mail-flow admin lab, this project focuses on how identity is provisioned, secured, and governed at the tenant level — dynamic groups, Conditional Access, emergency access, self-service password reset, and (in later scenarios) Privileged Identity Management, scoped delegation, access reviews, and enterprise app SSO.
+Eight scenarios covering identity, access control, and governance in a live Microsoft 365 / Entra ID tenant, built for a fictional logistics and supply chain company. This project focuses on how identity is provisioned, secured, and governed at the tenant level — dynamic groups, Conditional Access, emergency access, self-service password reset, Privileged Identity Management, scoped delegation, access reviews, and enterprise app SSO.
 
 Each scenario is documented as a build → configure → verify walkthrough, and where applicable, as a reproduce → diagnose → fix → verify support ticket, consistent with a real Tier 1/2 identity administration workload.
 
