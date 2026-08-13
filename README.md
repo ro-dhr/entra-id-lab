@@ -151,12 +151,12 @@ Enabling SSPR
 
 ![SSPR enabled](screenshots/scenario04-01-sspr-enabled.png)
 
-Note: Requiring 2 methods instead of 1 is a much better practice, just in case one method of authentication is compromised.
+Note: Requiring 2 methods instead of 1 is a much better practice. If an attacker were to gain one method of authentication (E.g Your phone), they could reset your password and gain access to your account.
 
 ![SSPR requiring 2 methods](screenshots/scenario04-02-sspr-two-methods-required.png)
 
 ### Build — Conditional Access requiring MFA
-Created a new Conditional Access policy, **Require MFA For All Users**, applying to all users (with the admin and break-glass accounts excluded, learned from the previous scenario), Grant control set to **Require multifactor authentication**. Rolled out in Report-only first, then switched to On.
+Created a new Conditional Access policy, **Require MFA For All Users**, applying to all users (with the admin and break-glass accounts excluded, learned from the previous scenario), and set the Grant control to **Require multifactor authentication**. Rolled out in Report-only first, then switched to On.
 
 ![Grant control requiring MFA](screenshots/scenario04-03-ca-policy-grant-mfa.png)
 ![Policy switched from Report-only to On](screenshots/scenario04-04-ca-policy-on.png)
