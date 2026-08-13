@@ -151,7 +151,7 @@ Enabling SSPR
 
 ![SSPR enabled](screenshots/scenario04-01-sspr-enabled.png)
 
-Note: Requiring 2 methods instead of 1 is a much better practice. If an attacker were to gain one method of authentication (E.g Your phone), they could reset your password and gain access to your account.
+Note: Requiring 2 methods instead of 1 is a much better practice. If an attacker were to gain one method of authentication, they could reset your password leading to your account being compromised.
 
 ![SSPR requiring 2 methods](screenshots/scenario04-02-sspr-two-methods-required.png)
 
