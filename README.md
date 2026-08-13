@@ -184,8 +184,14 @@ To confirm the SSPR configuration from earlier was fully functional (not just co
 
 ![SSPR step 1 — phone verification](screenshots/scenario04-11-sspr-test-step1.png)
 ![SSPR step 2 — authenticator app verification](screenshots/scenario04-12-sspr-test-step2.png)
+
+After completing both methods (SMS and Auth App), Charles can now create a new password.
+
 ![Setting a new password](screenshots/scenario04-13-sspr-new-password.png)
 ![Password reset confirmed](screenshots/scenario04-14-sspr-reset-complete.png)
+
+Charles has now completed SSPR and is signed in.
+
 ![Signed in successfully with the new password](screenshots/scenario04-15-signin-after-sspr.png)
 
 **Root cause:** Charles had no way to complete MFA after losing his registered device, and had no fallback registered method for SSPR to fall back on either. **Resolution:** Clearing his registered methods as admin let him re-register cleanly, and testing SSPR afterward confirmed the whole authentication chain (registration → CA-enforced MFA → self-service reset) was working end-to-end, not just individually configured.
