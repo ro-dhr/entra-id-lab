@@ -224,29 +224,23 @@ Set the eligibility window to 6 months (time-bound rather than permanent) — se
 ![Assignment confirmed](screenshots/scenario05-04-assigned-confirmation.png)
 
 ### Verify — no standing access
-Signed in as Priya and confirmed Helpdesk Administrator appeared under **Eligible assignments**, not Active — she has zero privilege until she deliberately activates it.
+Signed in as Priya and confirmed Helpdesk Administrator appeared under **Eligible assignments**, not Active. She has zero privilege until she activates it herself.
 
 ![Priya sees the role as eligible only](screenshots/scenario05-05-priya-sees-eligible.png)
 
 ### Activate with justification
-Priya activated the role with a 1-hour duration and a specific business justification tied to a real task — resetting a Finance user's lost MFA methods, something SSPR alone can't do and genuinely requires elevated access.
+Priya activated the role for 1 hour to reset a Finance user's lost MFA methods, which SSPR alone can't do and genuinely requires elevated access.
 
 ![Activation request with justification entered](screenshots/scenario05-06-priya-activation-justification.png)
 
-(PIM's active-assignment view can take a few minutes to reflect a fresh activation in a trial tenant — this delay was hit and simply required a refresh.)
+(Her role is now **Active**)
 
-![Propagation delay before the active assignment appeared](screenshots/scenario05-07-propagation-delay.png)
 ![Priya's role now shows Active](screenshots/scenario05-08-priya-active-assignment.png)
 
 ### Verify — audit trail
-Checked PIM's audit history from the admin account and confirmed the activation, including Priya's full justification text, was logged and reviewable after the fact — the actual governance value of requiring a reason on activation.
+Checked PIM's audit history in the admin account and confirmed the activation, including Priya's full justification text and additional details.
 
 ![Audit history showing the activation and justification](screenshots/scenario05-09-audit-history-justification.png)
-
-### Deactivation
-Rather than let the 1-hour window run out passively, the role was manually deactivated once the task was complete — functionally equivalent to auto-expiry, and arguably the better practice, since it minimizes time spent elevated rather than just waiting out the clock.
-
-![Manually deactivating the role](screenshots/scenario05-10-manual-deactivation.png)
 
 **Outcome:** Priya holds no standing administrative privilege day-to-day. Elevated access exists only for as long as a specific, justified task requires it, is fully logged, and reverts automatically (or can be ended early) with no manual cleanup required. This is picked up again directly in Scenario 06, where Priya's tenant-wide eligibility is compared against a department-scoped assignment.
 
@@ -254,20 +248,31 @@ Rather than let the 1-hour window run out passively, the role was manually deact
 
 ## Scenario 06 — Administrative Units: Scoped Delegation
 
-**Goal:** Prove that a **restricted Administrative Unit (AU)** enforces a real access boundary around Finance — one that even a tenant-wide holder of the same admin role cannot cross without a scope-specific assignment.
+**Goal:** Prove that a **restricted Administrative Unit (AU)** enforces a real access boundary around Finance, one that even a tenant-wide holder of the same admin role cannot cross without a scope-specific assignment.
 
 ### Build — Finance AU
 Created a **Finance AU**, set to **Restricted management**, and added Janice Carey and Charles Spence as members.
 
 ![Creating the Finance AU (Restricted = Yes)](screenshots/scenario06-00-creating-finance-au.png)
+
+Finance AU was successfully created.
+
 ![Finance AU created](screenshots/scenario06-01-finance-au-created.png)
+
+For this AU, I'll assign Derek Chan as the Helpdesk Administrator.
+
 ![Derek Chan assigned Helpdesk Administrator scoped to the AU](screenshots/scenario06-02-assigning-derek-scoped-role.png)
+
+Showing Janice and Charles in the created Finance AU.
+
 ![Janice and Charles added as AU members](screenshots/scenario06-03-finance-members-added.png)
 
 ### Verify — the scoped role works
-Signed in as Derek Chan (Helpdesk Administrator scoped specifically to Finance AU) and successfully reset Charles Spence's password.
+Signed in as Derek Chan, who should be able to successfully reset Charles Spence's password.
 
 ![Derek successfully resets Charles's password](screenshots/scenario06-04-derek-resets-charles-succeeds.png)
+
+And it worked as expected.
 
 ### The real comparison: same role, different scope
 Rather than only showing the boundary from one angle, this scenario directly compares two people holding the identical role name — **Helpdesk Administrator** — at the same time, differing only in how that role is scoped:
@@ -283,11 +288,11 @@ Despite holding an **Active** Helpdesk Administrator assignment at that exact mo
 
 ![Priya blocked from resetting Charles's password despite an active role](screenshots/scenario06-06-priya-blocked-on-finance-user.png)
 
-For contrast, Priya's same tenant-wide role worked normally on a user **outside** the Finance AU (Mitchell Godfrey, Operations), confirming the restriction is specific to Finance AU membership and not a general permissions failure.
+For contrast, Priya's same tenant-wide role works normally on a user **outside** the Finance AU. To test, Priya tried to reset Mitchell Godfrey's password, which worked, confirming the restriction is specific to Finance AU membership and not a general permissions failure.
 
 ![Priya successfully resets a non-Finance user's password](screenshots/scenario06-07-priya-succeeds-outside-finance.png)
 
-**Root cause / design point:** Restricted Administrative Units enforce scope over role name. Holding "Helpdesk Administrator" tenant-wide is not sufficient to manage a restricted AU's members — only an assignment scoped directly to that AU grants access, even for another Helpdesk Administrator holding the identical role elsewhere. This also held true for the Global Administrator account itself during setup, which was similarly blocked from directly editing Janice Carey's user record until licensing was applied through group membership rather than a direct per-user edit — real, first-hand confirmation that the restriction applies regardless of role name, including to the tenant's highest privilege level.
+**Root cause/design point:** Restricted Administrative Units enforce scope over role name. Holding "Helpdesk Administrator" tenant-wide is not sufficient to manage a restricted AU's members — only an assignment scoped directly to that AU grants access, even for another Helpdesk Administrator holding the identical role elsewhere.
 
 **Outcome:** A precise, working demonstration of least-privilege enforcement — the boundary holds not because of who has "more" access, but because of how that access is scoped.
 
@@ -297,7 +302,7 @@ For contrast, Priya's same tenant-wide role worked normally on a user **outside*
 
 **Goal:** Integrate a real SaaS application with the tenant via SAML single sign-on, assign access through a security group, and validate a genuine end-to-end login — not just a configuration screen.
 
-### Build — add the gallery app
+### Build — Add the gallery app
 Added **Salesforce** from the Microsoft Entra App Gallery as a new enterprise application.
 
 ![Adding Salesforce from the app gallery](screenshots/scenario07-00-adding-salesforce-gallery-app.png)
@@ -312,75 +317,51 @@ Assigned the **Operations** security group (from Scenario 01) to the application
 ![Operations group assigned to the app](screenshots/scenario07-02-operations-group-assigned.png)
 ![Assigning the app role](screenshots/scenario07-03-assigning-app-role.png)
 
-### Going further: a real Salesforce org
-Rather than stop at a placeholder configuration, signed up for a free Salesforce Developer Edition org to complete a genuine, live SAML handshake rather than an unverified one.
+### Creating a Salesforce Org
+Signed up for a free Salesforce Developer Edition org to complete a genuine, live SAML handshake rather than an unverified one.
 
 ![Salesforce Developer org created](screenshots/scenario07-04-salesforce-dev-org-created.png)
 
 In Salesforce, created a matching SAML Single Sign-On configuration, importing the real Issuer, Identity Provider Login URL, and signing certificate from Entra.
 
 ![Salesforce SSO settings](screenshots/scenario07-05-salesforce-sso-settings.png)
+
+Filled out all necessary configurations.
+
 ![Salesforce SAML configuration form](screenshots/scenario07-06-salesforce-saml-config-form.png)
+
+SSO settings are configured and saved.
+
 ![Salesforce SAML configuration saved](screenshots/scenario07-07-salesforce-saml-saved.png)
 
 Updated Entra's Basic SAML Configuration with the real Entity ID and ACS URL generated by Salesforce, replacing the earlier placeholder values.
 
 ![Entra updated with real Salesforce values](screenshots/scenario07-08-entra-updated-with-real-values.png)
 
-### Provisioning: the missing piece
-An early SSO test unexpectedly signed in as the admin's own Salesforce account rather than the test user's — because the Salesforce org had only one existing user (the admin), and SSO can only log a person into an account that already exists (or is auto-provisioned via Just-in-Time provisioning, not configured here). Created a dedicated Salesforce user for Grace Okafor with a username matching her Entra UPN exactly, since the SSO configuration matches identity by username.
+### Provisioning: Creating the user
+Created a dedicated Salesforce user for Grace Okafor with a username matching her Entra UPN exactly, since the SSO configuration matches identity by username.
 
 ![Creating a matching Salesforce user for Grace](screenshots/scenario07-09-grace-salesforce-user-created.png)
 
 ### Verify — real, working SSO
-Signed in as Grace Okafor via `myapps.microsoft.com` and clicked the Salesforce tile.
+Signed in as Grace Okafor via `myapps.microsoft.com` and clicked the Salesforce tile. (Note: Salesforce app now pops up on the dashboard!)
 
 ![Signing in as Grace to test SSO](screenshots/scenario07-10-signing-in-as-grace.png)
 
-The SAML handshake completed successfully, logging Grace into her own distinct Salesforce account — confirmed by her name and username in the top-right of Salesforce, not the admin's.
+The SAML handshake completed successfully, logging Grace into her own distinct Salesforce account, confirmed by her name and username in the top-right of Salesforce.
 
 ![SSO succeeds — Grace Okafor logged into her own Salesforce account](screenshots/scenario07-11-sso-success-grace-logged-in.png)
-
-**Root cause of the early failure:** correct SAML configuration alone isn't sufficient for per-user SSO — the target application also needs a matching user identity to sign the person into, either provisioned in advance or created automatically via JIT provisioning. **Resolution:** manually provisioning a matching Salesforce user closed the loop, resulting in a genuine, verified end-to-end SSO login rather than a configuration that was merely believed to be correct.
 
 **Outcome:** A complete, live SSO integration — real IdP (Entra) and real SP (Salesforce), group-based access assignment, and a verified login as a specific, distinct user.
 
 ---
 
-## Notes on Tooling
+## Key Takeaways
+ 
+A few things came up while building this that weren't part of the original plan, but ended up being some of the most useful parts of the process:
+ 
+- **MFA in Entra ID isn't controlled by one setting** I spent a while confused about why the break-glass account kept getting hit with an MFA prompt even though it was excluded from every Conditional Access policy I'd built. Turned out Conditional Access, Security Defaults, legacy per-user MFA, and Identity Protection's MFA registration policy can all independently force MFA, and none of them tell you the others exist. 
+- **A restricted Administrative Unit will lock out even a Global Admin.** I found this out the hard way, trying to assign a license directly to a Finance user and getting told I didn't have permission, as the Global Administrator. Turns out that's the AU working exactly as intended. The fix was licensing through the group instead of the user directly, which also made it click why I'd set up group-based licensing back in Scenario 01 in the first place.
+- **A correct SAML config isn't the same as a working SSO login.** My first real test signed a test user straight into my own Salesforce account instead of theirs, because there was no Salesforce account for them to sign into at all. SSO can only log someone into an identity that already exists on the other end, or one that gets auto-created (Such a silly mistake). I ended up manually provisioning a matching user just to prove the whole thing actually worked end to end, not just that the config looked right.
 
-All configuration in this lab was performed through the Microsoft 365 admin center and the Entra admin center GUIs. In a production environment, this configuration is more commonly deployed via Microsoft Graph PowerShell for consistency and repeatability — for example:
-
-```powershell
-# Scenario 01 equivalent — dynamic group with membership rule
-New-MgGroup -DisplayName "IT Department" -MailEnabled:$false -SecurityEnabled `
-  -GroupTypes "DynamicMembership" -MembershipRule '(user.department -eq "IT")' `
-  -MembershipRuleProcessingState "On"
-
-# Scenario 02 equivalent — Conditional Access policy blocking legacy auth (via Graph)
-New-MgIdentityConditionalAccessPolicy -DisplayName "Block Legacy Authentication" `
-  -State "enabled" -Conditions @{ ClientAppTypes = @("exchangeActiveSync","other") } `
-  -GrantControls @{ Operator = "OR"; BuiltInControls = @("block") }
-
-# Scenario 03 equivalent — creating the break-glass account
-New-MgUser -DisplayName "Emergency Access Admin" -UserPrincipalName "breakglass@cloudpulsesolutions.onmicrosoft.com" `
-  -PasswordProfile @{ Password = "<securely-generated>"; ForceChangePasswordNextSignIn = $false } -AccountEnabled
-
-# Scenario 04 equivalent — clearing a user's authentication methods
-Get-MgUserAuthenticationMethod -UserId "cspence@cloudpulsesolutions.onmicrosoft.com" |
-  ForEach-Object { Remove-MgUserAuthenticationMethod -UserId "cspence@cloudpulsesolutions.onmicrosoft.com" -AuthenticationMethodId $_.Id }
-
-# Scenario 05 equivalent — adding an eligible PIM assignment
-New-MgRoleManagementDirectoryRoleEligibilityScheduleRequest -Action "AdminAssign" `
-  -PrincipalId "<Priya's object ID>" -RoleDefinitionId "<Helpdesk Administrator role ID>" `
-  -DirectoryScopeId "/" -ScheduleInfo @{ StartDateTime = (Get-Date); Expiration = @{ Type = "AfterDuration"; Duration = "P180D" } }
-
-# Scenario 06 equivalent — creating a restricted Administrative Unit and scoping a role to it
-New-MgDirectoryAdministrativeUnit -DisplayName "Finance AU" -Description "Scoped administrative boundary for Finance" -IsMemberManagementRestricted
-New-MgDirectoryAdministrativeUnitScopedRoleMember -AdministrativeUnitId "<Finance AU ID>" `
-  -RoleId "<Helpdesk Administrator role ID>" -RoleMemberInfo @{ Id = "<Derek's object ID>" }
-
-# Scenario 07 equivalent — assigning a group to an enterprise application
-New-MgServicePrincipalAppRoleAssignedTo -ServicePrincipalId "<Salesforce service principal ID>" `
-  -PrincipalId "<Operations group ID>" -ResourceId "<Salesforce service principal ID>" -AppRoleId "<default app role ID>"
-```
+---
