@@ -182,7 +182,7 @@ As admin, deleted both of Charles's registered authentication methods, clearing 
 
 ![Both methods deleted — no usable methods remain](screenshots/scenario04-07-charles-methods-deleted.png)
 
-### Verify — re-registration and sign-in
+### Verify — Re-registration and sign-in
 Signed in as Charles again. With no methods on file, he was walked through registering Microsoft Authenticator and a phone number from scratch.
 
 ![Authenticator registration complete](screenshots/scenario04-08-charles-authenticator-complete.png)
@@ -344,7 +344,7 @@ Created a dedicated Salesforce user for Grace Okafor with a username matching he
 
 ![Creating a matching Salesforce user for Grace](screenshots/scenario07-09-grace-salesforce-user-created.png)
 
-### Verify — real, working SSO
+### Verify — Conifrming that SSO Works
 Signed in as Grace Okafor via `myapps.microsoft.com` and clicked the Salesforce tile. (Note: Salesforce app now pops up on the dashboard!)
 
 ![Signing in as Grace to test SSO](screenshots/scenario07-10-signing-in-as-grace.png)
