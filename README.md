@@ -27,6 +27,7 @@ Each scenario is documented as a build → configure → verify walkthrough, and
 | 05 | [Privileged Identity Management (PIM)](#scenario-05--privileged-identity-management-pim) | Just-in-time access |
 | 06 | [Administrative Units — scoped delegation](#scenario-06--administrative-units--scoped-delegation) | Least privilege |
 | 07 | [Enterprise Application & SSO](#scenario-07--enterprise-application--sso) | App integration |
+| 08 | [Key Takeaways](#Keytakeaways) | What I learned |
 
 ---
 
