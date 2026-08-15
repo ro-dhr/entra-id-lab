@@ -340,11 +340,11 @@ Updated Entra's Basic SAML Configuration with the real Entity ID and ACS URL gen
 ![Entra updated with real Salesforce values](screenshots/scenario07-08-entra-updated-with-real-values.png)
 
 ### Provisioning: Creating the user
-Created a dedicated Salesforce user for Grace Okafor with a username matching her Entra UPN exactly, since the SSO configuration matches identity by username.
+Created a dedicated Salesforce user for Grace Okafor with a username matching her Entra UPN exactly, since the SSO configuration matches identity by username. Brought this up in (#Key-Takeaways)
 
 ![Creating a matching Salesforce user for Grace](screenshots/scenario07-09-grace-salesforce-user-created.png)
 
-### Verify — Conifrming that SSO Works
+### Verify — Confirming that SSO Works
 Signed in as Grace Okafor via `myapps.microsoft.com` and clicked the Salesforce tile. (Note: Salesforce app now pops up on the dashboard!)
 
 ![Signing in as Grace to test SSO](screenshots/scenario07-10-signing-in-as-grace.png)
