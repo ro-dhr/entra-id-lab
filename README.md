@@ -16,7 +16,7 @@ Each scenario is documented as a build → configure → verify walkthrough, and
 | **Admin account** | Rooble Dahir — Global Administrator |
 | **Emergency access account** | Emergency Access Admin (`breakglass@cloudpulsesolutions.onmicrosoft.com`) — Global Administrator, excluded from Conditional Access |
 
-## Scenarios (7/7 completed)
+## Scenarios 
 
 | # | Scenario | Area |
 |---|---|---|
