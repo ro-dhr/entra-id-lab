@@ -138,7 +138,7 @@ Confirmed the sign-in event is visible and traceable in Sign-in logs — critica
 
 ![Break-glass sign-in shown in logs](screenshots/scenario03-10-shown-in-signin-logs.png)
 
-**Outcome:** A working emergency access account exists, correctly excluded from Conditional Access, hardened against lingering/idle sessions, and monitorable via sign-in logs. Its ongoing governance (periodic review of whether it's still needed and appropriately scoped) is picked up later in Scenario 07 (Access Reviews).
+**Outcome:** A working emergency access account exists, correctly excluded from Conditional Access, hardened against lingering/idle sessions, and monitorable via sign-in logs.
 
 ---
 
