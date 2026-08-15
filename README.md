@@ -340,7 +340,7 @@ Updated Entra's Basic SAML Configuration with the real Entity ID and ACS URL gen
 ![Entra updated with real Salesforce values](screenshots/scenario07-08-entra-updated-with-real-values.png)
 
 ### Provisioning: Creating the user
-Created a dedicated Salesforce user for Grace Okafor with a username matching her Entra UPN exactly, since the SSO configuration matches identity by username. Brought this up in (#Key-Takeaways)
+Created a dedicated Salesforce user for Grace Okafor with a username matching her Entra UPN exactly, since the SSO configuration matches identity by username. 
 
 ![Creating a matching Salesforce user for Grace](screenshots/scenario07-09-grace-salesforce-user-created.png)
 
