@@ -163,13 +163,13 @@ Note: Requiring 2 methods instead of 1 is a much better practice. If an attacker
 ![SSPR requiring 2 methods](screenshots/scenario04-02-sspr-two-methods-required.png)
 
 ### Build — Conditional Access requiring MFA
-Created a new Conditional Access policy, **Require MFA For All Users**, applying to all users (with the admin and break-glass accounts excluded, learned from the previous scenario), and set the Grant control to **Require multifactor authentication**. Rolled out in Report-only first, then switched to On.
+Created a new Conditional Access policy named **Require MFA For All Users**, applying to all users (excluding the admin and break-glass admin accounts), and set the Grant control to **Require multifactor authentication**. Rolled out in Report-only first, then switched to On.
 
 ![Grant control requiring MFA](screenshots/scenario04-03-ca-policy-grant-mfa.png)
 ![Policy switched from Report-only to On](screenshots/scenario04-04-ca-policy-on.png)
 
 ### Reproduce — user prompted for MFA
-Signed in as Charles Spence (who had not yet registered MFA) and confirmed he was prompted to add a sign-in method, as required by the new Conditional Access policy.
+Signed in as Charles Spence (hasn'tregistered MFA yet) and confirmed he was prompted to add a sign-in method, as required by the new Conditional Access policy.
 
 ![Charles prompted to add a sign-in method](screenshots/scenario04-05-charles-prompted-mfa.png)
 
@@ -181,7 +181,7 @@ Checked his registered authentication methods (Microsoft Authenticator + phone n
 ![Charles's authentication methods before the fix](screenshots/scenario04-06-charles-methods-before.png)
 
 ### Fix
-As admin, deleted both of Charles's registered authentication methods, clearing the way for him to re-register fresh on a new device.
+As admin, deleted both of Charles's registered authentication methods, clearing the way for him to re-register on a new device.
 
 ![Both methods deleted — no usable methods remain](screenshots/scenario04-07-charles-methods-deleted.png)
 
@@ -193,7 +193,7 @@ Signed in as Charles again. With no methods on file, he was walked through regis
 ![Charles signed in successfully after MFA setup](screenshots/scenario04-10-charles-signed-in.png)
 
 ### Bonus verify — SSPR works end-to-end
-To confirm the SSPR configuration from earlier was fully functional (not just configured), walked through the self-service "Get back into your account" flow as Charles using his newly registered methods.
+To confirm the SSPR configuration from earlier was fully functional, I walked through the self-service "Get back into your account" flow as Charles using his newly registered methods.
 
 ![SSPR step 1 — phone verification](screenshots/scenario04-11-sspr-test-step1.png)
 ![SSPR step 2 — authenticator app verification](screenshots/scenario04-12-sspr-test-step2.png)
