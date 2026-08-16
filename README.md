@@ -9,7 +9,7 @@ Each scenario is documented as a build → configure → verify walkthrough, and
 | | |
 |---|---|
 | **Company** | CloudPulse Solutions (fictional, ~350 employees) — logistics and supply chain management |
-| **Tenant** | `cloudpulsesolutions.onmicrosoft.com` (Office 365 E5 trial + Enterprise Mobility + Security E5 trial) |
+| **Tenant** | `cloudpulsesolutions.onmicrosoft.com` (Office 365 E5 + Enterprise Mobility + Security E5) |
 | **Admin tools used** | Microsoft 365 admin center, Entra admin center, Conditional Access, Identity Protection |
 | **Departments** | IT, Finance, Operations |
 | **Users** | Derek Chan (IT Support Specialist), Priya Nair (IT Systems Administrator), Janice Carey (Finance Manager), Charles Spence (Accounts Payable Specialist), Mitchell Godfrey (Operations Coordinator), Grace Okafor (Logistics Analyst) |
