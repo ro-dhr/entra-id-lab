@@ -192,7 +192,7 @@ Signed in as Charles again. With no methods on file, he was walked through regis
 ![SMS method added](screenshots/scenario04-09-charles-sms-added.png)
 ![Charles signed in successfully after MFA setup](screenshots/scenario04-10-charles-signed-in.png)
 
-### Bonus verify — SSPR works end-to-end
+### Verify #2 — SSPR works end-to-end
 To confirm the SSPR configuration from earlier was fully functional, I walked through the self-service "Get back into your account" flow as Charles using his newly registered methods.
 
 ![SSPR step 1 — phone verification](screenshots/scenario04-11-sspr-test-step1.png)
@@ -207,7 +207,7 @@ Charles has now completed SSPR and is signed in.
 
 ![Signed in successfully with the new password](screenshots/scenario04-15-signin-after-sspr.png)
 
-**Root cause:** Charles had no way to complete MFA after losing his registered device, and had no fallback registered method for SSPR to fall back on either. **Resolution:** Clearing his registered methods as admin let him re-register cleanly, and testing SSPR afterward confirmed the whole authentication chain (registration → CA-enforced MFA → self-service reset) was working end-to-end, not just individually configured.
+**Root cause:** Charles had no way to complete MFA after losing his registered device, and didn't have two registered methods for SSPR to fall back on either. **Resolution:** Clearing his registered methods as admin let him re-register cleanly, and testing SSPR afterward confirmed the whole authentication chain works.
 
 ---
 
