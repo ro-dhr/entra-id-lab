@@ -154,11 +154,11 @@ Enabled Microsoft Authenticator and SMS as available authentication methods tena
 
 ![Authentication methods enabled (Authenticator + SMS)](screenshots/scenario04-00-auth-methods-enabled.png)
 
-Enabling SSPR
+Enabling Self Service Password Reset (SSPR).
 
 ![SSPR enabled](screenshots/scenario04-01-sspr-enabled.png)
 
-Note: Requiring 2 methods instead of 1 is a much better practice. If an attacker were to gain one method of authentication, they could reset your password leading to your account being compromised.
+Note: Requiring 2 methods instead of 1 is a much better practice. If an attacker were to gain access to one authentication method, they could reset your password, leading to your account being compromised.
 
 ![SSPR requiring 2 methods](screenshots/scenario04-02-sspr-two-methods-required.png)
 
